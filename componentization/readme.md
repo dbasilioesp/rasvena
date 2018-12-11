@@ -2,59 +2,61 @@
 
 O primeiro passo ao receber um layout para desenvolver sua versão web é fazer um exercício de componentização dos elementos que formam aquele layout.
 
-![](./layout.png)
+![Layout](./layout2.png)
 
 Seguindo o exemplo acima, seria criado 3 componentes e uma View que junta os componentes para criar a página por assim dizer:
 
-- ProductItem
-- ProductList
-- StoreView
+- Infocard
+- InfocardList
+- HomeView
 
-## ProductItem
+## Infocard
 
 ### Estrutura e Estilo
 
-O primeiro seria o ProductItem em si, contendo a imagem do produto, o nome e o preço. Ficando sua estrutura da seguinta forma:
+O primeiro seria o InfocardItem em si, contendo uma imagem, um titulo e uma descrição. Ficando sua estrutura da seguinta forma:
 
 ```html
-<div class="product-item">
-  <div class="product-item__image">
+<div class="infocard">
+  <figure class="infocard__image">
     <img src="">
-  </div>
-  <h2 class="product-item__title">Title</h2>
-  <div class="product-item__price">R$ 15,00</div>
+  </figure>
+  <h2 class="infocard__title">Title</h2>
+  <p class="infocard__description">Lorem ...</p>
+  <button class="infocard__button">Ver mais</button>
 </div>
 ```
 
 ```scss
-.product-item {
-  .product-item__image {}
-  .product-item__title {}
-  .product-item__price {}
+.infocard {
+  .infocard__image {}
+  .infocard__title {}
+  .infocard__description {}
+  .infocard__button {}
 }
 ```
 
-Essa estrutura pode acabar tendo mais classes de ajuda durante o desenvolvimento, como `.product-item__wrap`, ou em separando em regiões como: `.product-item__header`, `.product-item__main`, `.product-item__footer`. Mas sempre deixando para casos que realmente precisem.
+Essa estrutura pode acabar tendo mais classes de ajuda durante o desenvolvimento, como `.infocard__wrap`, ou em separando em regiões como: `.infocard__header`, `.infocard__main`, `.infocard__footer`. Mas sempre deixando para casos que realmente precisem.
 
-Um ponto importante aqui, é não adicionar estilo de dimensão ou posicionamento ao  `.product-item`, assim como margens e posicionamento. Quem vai ficar responsável por esses estilos será os outros componentes que irão utiliza-lo. Deixando ele o mais reútilizavel possível.
+Um ponto importante aqui, é não adicionar estilo de dimensão ou posicionamento ao  `.inforcard`, assim como margens e posicionamento. Quem vai ficar responsável por esses estilos será os outros componentes que irão utiliza-lo. Deixando ele o mais reútilizavel possível.
 
-## ProductList
+## InfocardList
 
 ### Estrutura e Estilo
 
-A lista de produtos básicamente é um container utilizando vários `ProductItems`, sua estrutura ficaria assim:
+A lista de infocards básicamente é um container utilizando vários `Infocard`, sua estrutura ficaria assim:
 
 ```html
-<div class="product-list">
-  <div class="product-list__item product-title">Title</div>
-  <div class="product-list__wrap">
-    <div class="product-list__item product-item">
+<div class="inforcard-list">
+  <div class="infocard-list__title">Title</div>
+  <div class="infocard-list__wrap">
+    <div class="infocard-list__item infocard">
       ...
     </div>
-    <div class="product-list__item product-item">
+    <div class="infocard-list__item infocard">
       ...
     </div>
-    <div class="product-list__item product-item">
+    <div class="infocard-list__item infocard">
       ...
     </div>
   </div>
@@ -62,36 +64,36 @@ A lista de produtos básicamente é um container utilizando vários `ProductItem
 ```
 
 ```scss
-.product-list {
-  .product-list__title {}
-  .product-list__wrap {}
-  .product-list__item {
+.infocard-list {
+  .infocard-list__title {}
+  .infocard-list__wrap {}
+  .infocard-list__item {
     margin: 0 5px;
   }
 }
 ```
 
-Por mais que seja uma estrutura bem simples, esse será o componente que será responsável por organizar os `ProductItem`, fornecendo estilo de dimensão como margens. Outras opções seria: usar `position`, `flexbox`, `grid`.
+Por mais que seja uma estrutura bem simples, esse será o componente que será responsável por organizar os `Infocard`, fornecendo estilo de dimensão como margens. Outras opções seria: usar `position`, `flexbox`, `grid`.
 
 
-## StoreView
+## HomeView
 
-Aqui seria a última camada, juntando o `ProductList` e qualquer outro componente para formar a página ou a view. Nesse caso, poderia ter um componente com informações do site como um `Dashboard`.
+Aqui seria a última camada, juntando o `InfocardList` e qualquer outro componente para formar a página ou a view. Nesse caso, poderia ter um componente com informações do site como um `Dashboard`.
 
 ```html
-<div class="store-view">
-  <div class="store-view__dashboard">
+<div class="home-view">
+  <div class="home-view__dashboard">
     ...
   </div>
-  <div class="store-view__product-list">
+  <div class="home-view__inforcard-list">
     ...
   </div>
 </div>
 ```
 
 ```scss
-.store-view {
-  .store-view__dashboard {}
-  .store-view__product-list {}
+.home-view {
+  .home-view__dashboard {}
+  .home-view__product-list {}
 }
 ```

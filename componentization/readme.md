@@ -92,7 +92,7 @@ Aqui seria a última camada, juntando o `InfocardList` e qualquer outro componen
 ```scss
 .home-view {
   .home-view__dashboard {}
-  .home-view__product-list {}
+  .home-view__infocard-list {}
 }
 ```
 
@@ -101,6 +101,16 @@ Aqui seria a última camada, juntando o `InfocardList` e qualquer outro componen
 ### Estados
 
 Utilizando o componente `Infocard` como exemplo, agora poderiamos colocar ele dentro de um componente VueJs e assim adicionar estados ao componente que mudariam seu estilo:
+
+```js
+v-bind:class="{'selected': isSelected}"
+```
+
+```js
+props: {
+  isSelected: Boolean
+}
+```
 
 ```html
 // Infocard.vue
@@ -120,12 +130,23 @@ export default {
 </script>
 ```
 
-Esse é um exemplo que ao instanciar esse componente e passassemos por parametro `isSelected`, o componente possuirá outro estilo.
+Esse é um exemplo que ao instanciar esse componente e ao passarmos o parametro `isSelected`, o componente possuirá o classe `selected` podendo ser adicionado regras de estilo que irão mudar o visual do componente.
 
+### Eventos e Responsabilidades
 
-### Eventos
+Nesse mesmo componente nós possuimos um botão com titulo `Ver mais`, o componente sozinho não sabe o que deve acontecer ao clica-lo. Então devemos subir a responsábilidade para quem está utilizando-o. Segue um exemplo de como emitir um evento ao clicar no botão:
 
-Nesse mesmo componente nós possuimos um botão com titulo `Ver mais`, o componente sozinho não sabe o que deve acontecer ao clica-lo. Então devemos subir a responsábilidade para quem está utilizando ele.
+```html
+<button class="infocard__button" v-on:click="onClick">Ver mais</button>
+```
+
+```js
+methods: {
+  onClick: function() {
+    this.$emit('onClickChild');
+  }
+}
+```
 
 ```html
 // Infocard.vue
@@ -151,7 +172,13 @@ export default {
 </script>
 ```
 
-Aqui nós adicionamos um emiter de evento com nome `onClickChild` para que o componente pai possa adicionar uma função para escutar o evento cada vez que ele for emitido. Segue um exemplo de um componente pai escutando o evento de click do botão e carregando uma nova tela.
+Aqui nós adicionamos um emiter de evento com nome `onClickChild` para que o componente pai possa adicionar uma função para escutar o evento cada vez que ele for emitido. 
+
+Ok, agora já temos um componente com todo seu comportamento isolado, podendo ser reutilizado em qualquer contexto. 
+
+#### Escutando um evento
+
+Segue um exemplo de um componente pai escutando o evento de click do botão e carregando uma nova tela.
 
 ```html
 // ParentTest

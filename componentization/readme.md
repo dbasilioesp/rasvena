@@ -1,6 +1,6 @@
 # Componentização
 
-O primeiro passo ao receber um layout para desenvolver sua versão web é fazer um exercício de componentização dos elementos que formam aquele layout.
+O primeiro passo ao receber um layout para desenvolver sua versão web é fazer um exercício de componentização dos elementos que formam aquele layout. Usando a imagem abaixo como exemplo:
 
 ![Layout](./layout2.png)
 

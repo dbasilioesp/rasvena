@@ -10,9 +10,9 @@ Seguindo o exemplo acima, seria criado 3 componentes e uma View que junta os com
 - InfocardList
 - HomeView
 
-## Infocard
+## Estrutura e Estilo
 
-### Estrutura e Estilo
+### Infocard
 
 O primeiro seria o InfocardItem em si, contendo uma imagem, um titulo e uma descrição. Ficando sua estrutura da seguinta forma:
 
@@ -40,9 +40,7 @@ Essa estrutura pode acabar tendo mais classes de ajuda durante o desenvolvimento
 
 Um ponto importante aqui, é não adicionar estilo de dimensão ou posicionamento ao  `.inforcard`, assim como margens e posicionamento. Quem vai ficar responsável por esses estilos será os outros componentes que irão utiliza-lo. Deixando ele o mais reútilizavel possível.
 
-## InfocardList
-
-### Estrutura e Estilo
+### InfocardList
 
 A lista de infocards básicamente é um container utilizando vários `Infocard`, sua estrutura ficaria assim:
 
@@ -76,7 +74,7 @@ A lista de infocards básicamente é um container utilizando vários `Infocard`,
 Por mais que seja uma estrutura bem simples, esse será o componente que será responsável por organizar os `Infocard`, fornecendo estilo de dimensão como margens. Outras opções seria: usar `position`, `flexbox`, `grid`.
 
 
-## HomeView
+### HomeView
 
 Aqui seria a última camada, juntando o `InfocardList` e qualquer outro componente para formar a página ou a view. Nesse caso, poderia ter um componente com informações do site como um `Dashboard`.
 
@@ -97,3 +95,84 @@ Aqui seria a última camada, juntando o `InfocardList` e qualquer outro componen
   .home-view__product-list {}
 }
 ```
+
+## Scripting It With Vue
+
+### Estados
+
+Utilizando o componente `Infocard` como exemplo, agora poderiamos colocar ele dentro de um componente VueJs e assim adicionar estados ao componente que mudariam seu estilo:
+
+```html
+// Infocard.vue
+<template>
+  <div class="infocard" v-bind:class="{'selected': isSelected}">
+    ...
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Infocard",
+  props: {
+    isSelected: Boolean
+  }
+}
+</script>
+```
+
+Esse é um exemplo que ao instanciar esse componente e passassemos por parametro `isSelected`, o componente possuirá outro estilo.
+
+
+### Eventos
+
+Nesse mesmo componente nós possuimos um botão com titulo `Ver mais`, o componente sozinho não sabe o que deve acontecer ao clica-lo. Então devemos subir a responsábilidade para quem está utilizando ele.
+
+```html
+// Infocard.vue
+<template>
+  <div class="infocard" v-bind:class="{'selected': isSelected}">
+    ...
+    <button class="infocard__button" v-on:click="onClick">Ver mais</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Infocard",
+  props: {
+    isSelected: Boolean
+  },
+  methods: {
+    onClick: function() {
+      this.$emit('onClickChild');
+    }
+  }
+}
+</script>
+```
+
+Aqui nós adicionamos um emiter de evento com nome `onClickChild` para que o componente pai possa adicionar uma função para escutar o evento cada vez que ele for emitido. Segue um exemplo de um componente pai escutando o evento de click do botão e carregando uma nova tela.
+
+```html
+// ParentTest
+<template>
+  <div class="parent-test" >
+    <Infocard v-on:onClickChild="onClickParent" />
+  </div>
+</template>
+
+<script>
+import Infocard from "./Infocard.vue";
+
+export default {
+  name: "ParentTest",
+  methods: {
+    onClickParent: function() {
+      this.$route.push({name: 'Post1'});
+    }
+  },
+  ...
+}
+</script>
+```
+

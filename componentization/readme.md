@@ -1,4 +1,71 @@
-# Componentização
+
+# Pensando em componentização
+
+Oi, meu nome é David Basilio, e eu já venho trabalhando com web a alguns anos, acho que 8 até agora, atualmente me considero um desenvolvedor Full-Stack com plus em Front-end. Focado mais em criação de site, no layout e seu desenvolvimento visual, mais que na criação de aplicativos web. Isso não quer dizer que não passei por tecnologias mais antigas como Backbone, RequireJS e Angular 1. Por focar mais no layout, isso me fez demorar um pouco mais para olhar de uma forma efetiva que a idéia de componentização que o React trouxe. E após experimentar criar os sites usando essa formato de criação comecei a pensar mais fácilmente em como estruturar meu código de estilo (CSS, SCSS).
+
+No tutorial abaixo é um exemplo que eu acredito vá acontecer com frequencia na criação do site, talvez até chamar de um clássico no desenvolvimento de layout web. 
+
+## Usando html puro
+
+Para o desenvolvimento do estilo não é preciso estar usando uma ferramenta como React, VueJs ou Angular. Você pode começar criando uma pasta com um nome que denomine que é um ambiente de criação e não para o produto final. Ex: previews, styleguide, style-components, etc. Depois criar um ou mais arquivos html apenas apontando para o CSS gerado pelo seu Bundler (Webpack, Gulp, Grunt), e adicionar essa estrutura para cada componente que for criando:
+
+
+```html
+<head>
+  <!-- Se for ter mais que um arquivo com os componentes, pode jogar esse estilo para outro arquivo e importar aqui com a tag link -->
+  <style>
+    .preview .wrapper {
+      padding: 60px 0 200px;
+    }
+
+    .preview .container {
+      max-width: 1200px;
+      padding: 0 30px;
+      margin: 0 auto;
+    }
+
+    .preview .title {
+      background: #c94968;
+      padding: 5px 15px;
+      color: white;
+    }
+
+    .preview section {
+      margin-bottom: 2rem;
+    }
+  </style> 
+</head>
+<body class="preview">
+
+  <div class="wrapper">
+    <section>
+      <div class="container">
+        <p class="title">Link</p>
+      </div>
+      <!-- Your component below -->
+      <p>No que você está pensando <a href="#">hoje?</a></p>
+    </section>
+
+    <section>
+      <div class="container">
+        <p class="title">Botões</p>
+      </div>
+      <!-- Your component below -->
+      <button>Veja como chegar lá</button>
+    </section>
+
+    <section>
+      <div class="container">
+        <p class="title">Input</p>
+      </div>
+      <!-- Your component below -->
+      <input type="text" placeholder="Pesquisar">
+    </section>
+  </div>
+</body>
+```
+
+## Componentizando
 
 O primeiro passo ao receber um layout para desenvolver sua versão web é fazer um exercício de componentização dos elementos que formam aquele layout. Usando a imagem abaixo como exemplo:
 

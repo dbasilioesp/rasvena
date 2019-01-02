@@ -1,9 +1,13 @@
 
 # Pensando em componentização
 
-Oi, meu nome é David Basilio, e eu já venho trabalhando com web a alguns anos, acho que 8 até agora, atualmente me considero um desenvolvedor Full-Stack com plus em Front-end. Focado mais em criação de site, no layout e seu desenvolvimento visual, mais que na criação de aplicativos web. Isso não quer dizer que não passei por tecnologias mais antigas como Backbone, RequireJS e Angular 1. Por focar mais no layout, isso me fez demorar um pouco mais para olhar de uma forma efetiva que a idéia de componentização que o React trouxe. E após experimentar criar os sites usando essa formato de criação comecei a pensar mais fácilmente em como estruturar meu código de estilo (CSS, SCSS).
+Oi, meu nome é David Basilio, e eu já venho trabalhando com web a alguns anos, acho que 8 até agora, atualmente me considero um desenvolvedor Full-Stack com plus em Front-end. Focado mais em criação de site, no layout e seu desenvolvimento visual, mais que na criação de aplicativos web. Isso não quer dizer que não passei por tecnologias mais antigas como Backbone, RequireJS e Angular 1.6. 
+
+Por focar mais no layout, isso me fez demorar um pouco mais para olhar de uma forma efetiva que a idéia de componentização que o React trouxe. E após experimentar criar os sites usando essa formato de criação comecei a pensar mais fácilmente em como estruturar meu código de estilo (CSS, SCSS).
 
 No tutorial abaixo é um exemplo que eu acredito vá acontecer com frequencia na criação do site, talvez até chamar de um clássico no desenvolvimento de layout web. 
+
+Antes de pular para o tutorial, vou mostrar uma forma caseira de criar um espaço de trabalho para testar a criação do estilo junto ao html. Atualmente eu uso a lib Storybook quando estou criando junto com alguma ferramenta de componentização, tipo VueJS.
 
 ## Usando html puro
 

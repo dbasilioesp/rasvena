@@ -82,3 +82,6 @@ https://developers.google.com/web/fundamentals/design-and-ux/responsive/patterns
 
 The rules of responsive web typography 
 https://www.creativebloq.com/how-to/the-rules-of-responsive-web-typography
+
+Fundamentals of Motion Design
+https://www.invisionapp.com/inside-design/fundamentals-of-motion-design/

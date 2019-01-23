@@ -44,20 +44,10 @@ Por exemplo, caso você precise diminuir um titulo com tamanho 48px, vai diminui
 
 ## Controle do tamanho da fonte
 
-A técnica mais usada é a de adaptação por breakpoint, controlando os tamanhos através do `font-size` da tag `html`.
+No momento estou apenas usando a unidade `px` definida pelo layout, adaptando nas quebras.
 
-```scss
+E em alguns casos mais isolados, usando as unidades de viewport para não precisar fazer uma adaptaçã até algum breakpoint.
 
-html {
-  font-size: 100%;
-}
-
-@media (min-width: 40em) {
-  html {
-    font-size: 112.5%;
-  }
-}
-```
 
 ## Viewport units
 
@@ -85,3 +75,6 @@ https://www.creativebloq.com/how-to/the-rules-of-responsive-web-typography
 
 Fundamentals of Motion Design
 https://www.invisionapp.com/inside-design/fundamentals-of-motion-design/
+
+Modality: the one ux concept you need to unsderstand when designing intuitive user interface
+https://uxplanet.org/modality-the-one-ux-concept-you-need-to-understand-when-designing-intuitive-user-interfaces-e5e941c7acb1
